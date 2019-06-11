@@ -7,6 +7,7 @@ const Navigation = () => {
     <nav>
       <Link to={PAGES.HOME}>Home</Link>
       <Link to={PAGES.CONTENTS}>Contents</Link>
+      <Link to={PAGES.COUNTER}>Counter</Link>
     </nav>
   )
 }

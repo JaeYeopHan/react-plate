@@ -1,11 +1,11 @@
 import React from 'react'
-import CounterContainer from 'containers/counter-container'
 
 const HomeSection = () => {
   return (
     <>
       <h1>home section</h1>
-      <CounterContainer />
+      <p>Welcome React Architecture Lab!</p>
+      <p>I'm finding Best Practice of React.</p>
     </>
   )
 }
