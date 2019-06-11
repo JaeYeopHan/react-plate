@@ -3,16 +3,18 @@ export const counter = {
   count: 0,
 }
 
+export const NAMESPACE = 'counter'
+
 // Action (NAMESPACE/ACTION_NAME)
-const INCREASE = 'counter/INCREASE'
-const DECREASE = 'counter/DECREASE'
+const INCREASE = `${NAMESPACE}/INCREASE`
+const DECREASE = `${NAMESPACE}/DECREASE`
 
 // Action Creator
-export const increaseCount = () => ({
+export const increase = () => ({
   type: INCREASE,
 })
 
-export const decreaseCount = () => ({
+export const decrease = () => ({
   type: DECREASE,
 })
 

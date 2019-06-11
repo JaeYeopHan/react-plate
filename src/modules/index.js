@@ -19,4 +19,8 @@ export const GlobalProvider = ({ children }) => (
   </GlobalContext.Provider>
 )
 
-export const useStore = () => useContext(GlobalContext)
+export const useStore = target => {
+  const [globalState, dispatch] = useContext(GlobalContext)
+
+  return [globalState[target], dispatch]
+}
