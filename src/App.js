@@ -1,4 +1,7 @@
 import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import * as Routes from 'routes'
+import Navigation from 'components/navigation'
 
 function App() {
   return (
@@ -6,10 +9,21 @@ function App() {
       <header className="App-header">
         <h1>React Plate</h1>
       </header>
-      <nav>
-        <div>Home</div>
-      </nav>
-      <section />
+      <Router>
+        <Navigation />
+        <section>
+          <Switch>
+            {Routes.configs.map((config, index) => (
+              <Route
+                key={index}
+                path={config.path}
+                exact={config.exact}
+                component={config.component}
+              />
+            ))}
+          </Switch>
+        </section>
+      </Router>
     </div>
   )
 }
