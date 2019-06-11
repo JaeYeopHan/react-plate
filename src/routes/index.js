@@ -5,20 +5,15 @@ export const PAGES = {
   CONTENTS: '/contents',
 }
 
-export const configs = [
-  {
-    path: PAGES.CONTENTS,
-    exact: false,
-    component: loadable(() => import(/* webpackChunkName: "contents" */ 'pages/contents')),
-  },
-  {
-    path: PAGES.HOME,
-    exact: false,
-    component: loadable(() => import(/* webpackChunkName: "home" */ 'pages/home')),
-  },
-  {
-    path: PAGES.ERROR,
-    exact: false,
-    component: loadable(() => import(/* webpackChunkName: "error" */ 'pages/error')),
-  },
+export const routeConfigs = [
+  getRouteConfig(PAGES.CONTENTS, './contents'),
+  getRouteConfig(PAGES.HOME, './home'),
+  getRouteConfig(PAGES.ERROR, './error'),
 ]
+
+function getRouteConfig(path, componentPath) {
+  return {
+    path,
+    component: loadable(() => import(/* webpackChunkName: "contents" */ `${componentPath}`)),
+  }
+}
