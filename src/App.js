@@ -7,8 +7,8 @@ import Navigation from 'components/navigation'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="container">
+      <header>
         <h1>React Plate</h1>
       </header>
       <BrowserRouter>
