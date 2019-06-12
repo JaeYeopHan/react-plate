@@ -1,13 +1,18 @@
 import React, { createContext, useContext, useReducer, useMemo } from 'react'
 import counterReducer, { counter } from './counter'
+import todoReducer, { todo } from './todo'
 
+// Combine state
 const globalState = {
   counter,
+  todo,
 }
 
-const reducer = ({ counter }, action) => {
+// Combine reducer
+const reducer = ({ counter, todo }, action) => {
   return {
     counter: counterReducer(counter, action),
+    todo: todoReducer(todo, action),
   }
 }
 
@@ -22,6 +27,10 @@ export const GlobalProvider = ({ children }) => {
 
 export const useStore = target => {
   const [globalState, dispatch] = useContext(GlobalContext)
+
+  if (!globalState[target]) {
+    throw Error('Not found store module')
+  }
 
   return [globalState[target], dispatch]
 }

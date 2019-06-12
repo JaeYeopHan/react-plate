@@ -5,9 +5,18 @@ import { PAGES } from 'routes'
 const Navigation = () => {
   return (
     <nav>
-      <Link to={PAGES.HOME}>Home</Link>
-      <Link to={PAGES.CONTENTS}>Contents</Link>
-      <Link to={PAGES.COUNTER}>Counter</Link>
+      <Link to={PAGES.HOME} style={{ margin: '0px 8px' }}>
+        Home
+      </Link>
+      <Link to={PAGES.CONTENTS} style={{ margin: '0px 8px' }}>
+        Contents
+      </Link>
+      <Link to={PAGES.COUNTER} style={{ margin: '0px 8px' }}>
+        Counter
+      </Link>
+      <Link to={PAGES.TODO} style={{ margin: '0px 8px' }}>
+        Todo
+      </Link>
     </nav>
   )
 }
