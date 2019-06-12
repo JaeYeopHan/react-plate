@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer } from 'react'
+import React, { createContext, useContext, useReducer, useMemo } from 'react'
 import counterReducer, { counter } from './counter'
 
 const globalState = {
@@ -13,11 +13,12 @@ const reducer = ({ counter }, action) => {
 
 const GlobalContext = createContext()
 
-export const GlobalProvider = ({ children }) => (
-  <GlobalContext.Provider value={useReducer(reducer, globalState)}>
-    {children}
-  </GlobalContext.Provider>
-)
+export const GlobalProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, globalState)
+  const value = useMemo(() => [state, dispatch], [state])
+
+  return <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
+}
 
 export const useStore = target => {
   const [globalState, dispatch] = useContext(GlobalContext)
