@@ -17,6 +17,9 @@ const Navigation = () => {
       <Link to={PAGES.TODO} style={{ margin: '0px 8px' }}>
         Todo
       </Link>
+      <Link to={PAGES.MY_GITHUB} style={{ margin: '0px 8px' }}>
+        MyGitHub
+      </Link>
     </nav>
   )
 }

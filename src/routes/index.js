@@ -5,9 +5,11 @@ export const PAGES = {
   CONTENTS: '/contents',
   COUNTER: '/counter',
   TODO: '/todo',
+  MY_GITHUB: '/my-github',
 }
 
 export const routeConfigs = [
+  getRouteConfig(PAGES.MY_GITHUB, './my-github'),
   getRouteConfig(PAGES.TODO, './todo'),
   getRouteConfig(PAGES.COUNTER, './counter'),
   getRouteConfig(PAGES.CONTENTS, './contents'),

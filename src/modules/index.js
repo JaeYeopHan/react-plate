@@ -1,18 +1,23 @@
 import React, { createContext, useContext, useReducer, useMemo } from 'react'
 import counterReducer, { counter } from './counter'
 import todoReducer, { todo } from './todo'
+import myGitHubReducer, { myGitHub } from './my-github'
+import { info } from 'utils'
 
 // Combine state
 const globalState = {
   counter,
   todo,
+  myGitHub,
 }
 
 // Combine reducer
-const reducer = ({ counter, todo }, action) => {
+const reducer = ({ counter, todo, myGitHub }, action) => {
+  info(action)
   return {
     counter: counterReducer(counter, action),
     todo: todoReducer(todo, action),
+    myGitHub: myGitHubReducer(myGitHub, action),
   }
 }
 
