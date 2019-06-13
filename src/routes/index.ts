@@ -1,11 +1,12 @@
 import loadable from '@loadable/component'
 
-export const PAGES = {
-  HOME: '/',
-  CONTENTS: '/contents',
-  COUNTER: '/counter',
-  TODO: '/todo',
-  MY_GITHUB: '/my-github',
+export enum PAGES {
+  HOME = '/',
+  CONTENTS = '/contents',
+  COUNTER = '/counter',
+  TODO = '/todo',
+  MY_GITHUB = '/my-github',
+  ERROR = '',
 }
 
 export const routeConfigs = [
@@ -17,7 +18,7 @@ export const routeConfigs = [
   getRouteConfig(PAGES.ERROR, './error'),
 ]
 
-function getRouteConfig(path, componentPath) {
+function getRouteConfig(path: PAGES, componentPath: string) {
   return {
     path,
     component: loadable(() => import(/* webpackChunkName: "contents" */ `${componentPath}`)),

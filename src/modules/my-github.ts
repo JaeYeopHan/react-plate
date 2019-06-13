@@ -1,3 +1,9 @@
+export interface IMyGitHubState {
+  isLoading: boolean
+  contents: any
+  errorMessage: string
+}
+
 export const myGitHub = {
   isLoading: true,
   contents: 'contents',
@@ -14,7 +20,7 @@ export const fetch = () => ({
   type: FETCH,
 })
 
-export const fetchSuccess = payload => ({
+export const fetchSuccess = (payload: any) => ({
   type: FETCH_SUCCESS,
   payload,
 })
@@ -23,7 +29,7 @@ export const fetchFail = () => ({
   type: FETCH_FAIL,
 })
 
-export default function(state, action) {
+export default function(state: IMyGitHubState, action: any) {
   switch (action.type) {
     case FETCH:
       return {

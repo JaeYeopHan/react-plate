@@ -1,18 +1,24 @@
 import React, { createContext, useContext, useReducer, useMemo } from 'react'
-import counterReducer, { counter } from './counter'
-import todoReducer, { todo } from './todo'
-import myGitHubReducer, { myGitHub } from './my-github'
+import counterReducer, { counter, ICounterState } from './counter'
+import todoReducer, { todo, ITodoState } from './todo'
+import myGitHubReducer, { myGitHub, IMyGitHubState } from './my-github'
 import { info } from 'utils'
 
+interface IGlobalState {
+  counter: ICounterState
+  todo: ITodoState
+  myGitHub: IMyGitHubState
+}
+
 // Combine state
-const globalState = {
+const globalState: IGlobalState = {
   counter,
   todo,
   myGitHub,
 }
 
 // Combine reducer
-const reducer = ({ counter, todo, myGitHub }, action) => {
+const reducer = ({ counter, todo, myGitHub }: IGlobalState, action: any) => {
   info(action)
   return {
     counter: counterReducer(counter, action),
@@ -21,16 +27,17 @@ const reducer = ({ counter, todo, myGitHub }, action) => {
   }
 }
 
-const GlobalContext = createContext()
+const defaultValue: any[] | never[] = []
+const GlobalContext = createContext(defaultValue)
 
-export const GlobalProvider = ({ children }) => {
+export const GlobalProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, globalState)
   const value = useMemo(() => [state, dispatch], [state])
 
   return <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
 }
 
-export const useStore = target => {
+export const useStore = (target: string) => {
   const [globalState, dispatch] = useContext(GlobalContext)
 
   if (!globalState[target]) {

@@ -1,4 +1,4 @@
-export function delay(timeout = 1000) {
+export function delay(timeout: number = 1000) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(true)
@@ -6,7 +6,7 @@ export function delay(timeout = 1000) {
   })
 }
 
-export function info(action) {
+export function info(action: any) {
   console.log(action)
 }
 

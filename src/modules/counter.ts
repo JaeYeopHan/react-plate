@@ -1,3 +1,7 @@
+export interface ICounterState {
+  count: number
+}
+
 // State
 export const counter = {
   count: 0,
@@ -19,7 +23,7 @@ export const decrease = () => ({
 })
 
 // Reducer
-export default function(state, action) {
+export default function(state: ICounterState, action: any) {
   const { count } = state
 
   switch (action.type) {
