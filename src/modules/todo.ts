@@ -1,3 +1,4 @@
+// State
 export interface Item {
   name: string
   isDone: boolean
@@ -13,14 +14,23 @@ export const todo = {
 
 export const NAMESPACE = 'todo'
 
+// Action (NAMESPACE/ACTION_NAME)
 const ADD = `${NAMESPACE}/ADD`
 
-export const add = (name: string) => ({
+// Action Creator
+interface AddActionType {
+  type: typeof ADD
+  item: Item
+}
+
+export type TodoActionTypes = AddActionType
+
+export const add = (name: string): TodoActionTypes => ({
   type: ADD,
   item: { name, isDone: false },
 })
 
-export default function(state: ITodoState, action: any) {
+export default function(state: ITodoState, action: TodoActionTypes): ITodoState {
   const { items } = state
 
   switch (action.type) {

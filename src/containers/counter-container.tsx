@@ -1,6 +1,6 @@
 import React from 'react'
-import { useStore } from 'modules'
-import * as counter from 'modules/counter'
+import { useStore } from '../modules'
+import * as counter from '../modules/counter'
 
 const CounterContainer = () => {
   const [state, dispatch] = useStore(counter.NAMESPACE)

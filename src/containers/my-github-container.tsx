@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import { useStore } from 'modules'
-import * as myGitHub from 'modules/my-github'
-import { getMyGitHubProfile } from 'api'
+import { useStore } from '../modules'
+import * as myGitHub from '../modules/my-github'
+import { getMyGitHubProfile } from '../api'
 
 const MyGitHubContainer = () => {
   const [state, dispatch] = useStore(myGitHub.NAMESPACE)

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { useStore } from 'modules'
-import * as todo from 'modules/todo'
-import { Item } from 'modules/todo'
+import { useStore } from '../modules'
+import * as todo from '../modules/todo'
+import { Item } from '../modules/todo'
 
 const TodoContainer = () => {
   const [input, setInput] = useState('')

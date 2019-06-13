@@ -2,7 +2,7 @@ import React, { createContext, useContext, useReducer, useMemo } from 'react'
 import counterReducer, { counter, ICounterState } from './counter'
 import todoReducer, { todo, ITodoState } from './todo'
 import myGitHubReducer, { myGitHub, IMyGitHubState } from './my-github'
-import { info } from 'utils'
+import { info } from '../utils'
 
 interface IGlobalState {
   counter: ICounterState

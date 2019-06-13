@@ -1,8 +1,8 @@
+// State
 export interface ICounterState {
   count: number
 }
 
-// State
 export const counter = {
   count: 0,
 }
@@ -14,16 +14,26 @@ const INCREASE = `${NAMESPACE}/INCREASE`
 const DECREASE = `${NAMESPACE}/DECREASE`
 
 // Action Creator
-export const increase = () => ({
+interface IncreaseActionType {
+  type: typeof INCREASE
+}
+
+interface DecreaseActionType {
+  type: typeof DECREASE
+}
+
+export type CounterActionType = IncreaseActionType | DecreaseActionType
+
+export const increase = (): CounterActionType => ({
   type: INCREASE,
 })
 
-export const decrease = () => ({
+export const decrease = (): CounterActionType => ({
   type: DECREASE,
 })
 
 // Reducer
-export default function(state: ICounterState, action: any) {
+export default function(state: ICounterState, action: CounterActionType): ICounterState {
   const { count } = state
 
   switch (action.type) {

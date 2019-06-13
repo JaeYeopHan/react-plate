@@ -1,9 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { routeConfigs } from 'routes'
-import { GlobalProvider } from 'modules'
-
-import Navigation from 'components/navigation'
+import Navigation from './components/navigation'
+import { routeConfigs } from './routes'
+import { GlobalProvider } from './modules'
 
 function App() {
   return (
