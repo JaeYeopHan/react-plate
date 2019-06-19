@@ -1,26 +1,10 @@
-import React, { useEffect } from 'react'
-import { useStore } from 'modules'
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import * as myGitHub from 'modules/my-github'
-import { getMyGitHubProfile } from 'api'
 
 const MyGitHubContainer = () => {
-  const [state, dispatch] = useStore(myGitHub.NAMESPACE)
-  const { isLoading, contents } = state
-
-  useEffect(() => {
-    const fetchData = async () => {
-      dispatch(myGitHub.fetch())
-
-      try {
-        const response = await getMyGitHubProfile()
-        dispatch(myGitHub.fetchSuccess(response))
-      } catch (error) {
-        dispatch(myGitHub.fetchFail())
-      }
-    }
-
-    fetchData()
-  }, [dispatch])
+  const { isLoading, contents } = useSelector(state => state.myGitHub)
+  const dispatch = useDispatch()
 
   if (isLoading) {
     return <div>Loading...</div>
