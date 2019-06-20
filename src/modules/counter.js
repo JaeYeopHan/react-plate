@@ -1,39 +1,27 @@
-// State
-export const counter = {
+import { createAction, handleActions } from 'redux-actions'
+
+const initialState = {
   count: 0,
 }
 
-export const NAMESPACE = 'counter'
+const NAMESPACE = 'counter'
 
-// Action (NAMESPACE/ACTION_NAME)
 const INCREASE = `${NAMESPACE}/INCREASE`
 const DECREASE = `${NAMESPACE}/DECREASE`
 
-// Action Creator
-export const increase = () => ({
-  type: INCREASE,
-})
+export const increase = createAction(INCREASE)
+export const decrease = createAction(DECREASE)
 
-export const decrease = () => ({
-  type: DECREASE,
-})
-
-// Reducer
-export default function(state, action) {
-  const { count } = state
-
-  switch (action.type) {
-    case INCREASE:
-      return {
-        ...state,
-        count: count + 1,
-      }
-    case DECREASE:
-      return {
-        ...state,
-        count: count - 1,
-      }
-    default:
-      return state
-  }
-}
+export default handleActions(
+  {
+    [INCREASE]: state => ({
+      ...state,
+      count: state.count + 1,
+    }),
+    [DECREASE]: state => ({
+      ...state,
+      count: state.count - 1,
+    }),
+  },
+  initialState,
+)

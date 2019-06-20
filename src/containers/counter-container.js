@@ -1,17 +1,17 @@
-import React from 'react'
-import { useStore } from 'modules'
+import React, { useCallback } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import * as counter from 'modules/counter'
 
 const CounterContainer = () => {
-  const [state, dispatch] = useStore(counter.NAMESPACE)
-
-  const handleClickUp = () => dispatch(counter.increase())
-  const handleClickDown = () => dispatch(counter.decrease())
+  const count = useSelector(state => state.counter.count)
+  const dispatch = useDispatch()
+  const handleClickUp = useCallback(() => dispatch(counter.increase()), [dispatch])
+  const handleClickDown = useCallback(() => dispatch(counter.decrease()), [dispatch])
 
   return (
     <div>
       <h2>Counter Example</h2>
-      <div>{state.count}</div>
+      <div>{count}</div>
       <button onClick={handleClickUp}>up</button>
       <button onClick={handleClickDown}>down</button>
     </div>
