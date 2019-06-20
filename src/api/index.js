@@ -1,4 +1,4 @@
-import { getMockData } from 'utils'
+import { getMockData } from 'utils/mock'
 
 const phase = process.env.NODE_ENV
 
