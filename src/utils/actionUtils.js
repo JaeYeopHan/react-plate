@@ -1,20 +1,18 @@
 import { createAction } from 'redux-actions'
 import { all, call, put } from 'redux-saga/effects'
 
+import { startLoading, finishLoading } from 'modules/loading'
+
 export function createAsyncAction(type) {
-  // Create Action Types
   const FETCH = `${type}/FETCH`
-  const PENDING = `${type}/PENDING`
   const SUCCESS = `${type}/SUCCESS`
   const FAILURE = `${type}/FAILURE`
 
   return {
     FETCH,
-    PENDING,
     SUCCESS,
     FAILURE,
     fetch: createAction(FETCH),
-    pending: createAction(PENDING),
     success: createAction(SUCCESS, payload => payload),
     failure: createAction(FAILURE, payload => payload),
   }
@@ -26,7 +24,7 @@ export function createSaga(type, req) {
   return function*(action) {
     const payload = (action && action.payload) || null
 
-    yield put(actions.pending())
+    yield put(startLoading(type))
     try {
       if (typeof req === 'function') {
         const res = yield call(req, payload)
@@ -39,6 +37,8 @@ export function createSaga(type, req) {
       }
     } catch (e) {
       yield put(actions.failure(e))
+    } finally {
+      yield put(finishLoading(type))
     }
   }
 }

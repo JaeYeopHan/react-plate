@@ -8,18 +8,15 @@ export const finishLoading = createAction(FINISH_LOADING, requestType => request
 
 const initialState = {}
 
-const loading = handleActions(
-  {
-    [START_LOADING]: (state, action) => ({
-      ...state,
-      [action.payload]: true,
-    }),
-    [FINISH_LOADING]: (state, action) => ({
-      ...state,
-      [action.payload]: false,
-    }),
-  },
-  initialState,
-)
+const reducer = {
+  [START_LOADING]: (state, action) => ({
+    ...state,
+    [action.payload]: true,
+  }),
+  [FINISH_LOADING]: (state, action) => ({
+    ...state,
+    [action.payload]: false,
+  }),
+}
 
-export default loading
+export const loadingReducer = handleActions(reducer, initialState)
