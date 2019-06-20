@@ -19,6 +19,6 @@ export function getMockData() {
         blog: 'jbee.io',
         avartar_url: '',
       })
-    }, 3000)
+    }, 1000)
   })
 }
