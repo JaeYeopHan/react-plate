@@ -1,15 +1,15 @@
-import React, { useEffect, useCallback } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import * as myGitHub from 'modules/my-github'
 
 const MyGitHubContainer = () => {
-  const { isLoading, contents } = useSelector(state => state.myGitHub)
+  const isLoading = useSelector(state => state.loading[myGitHub.TYPE])
+  const { contents } = useSelector(state => state[myGitHub.TYPE])
   const dispatch = useDispatch()
-  const fetchData = useCallback(() => dispatch(myGitHub.fetch()), [dispatch])
 
   useEffect(() => {
-    fetchData()
-  }, [fetchData])
+    dispatch(myGitHub.fetch())
+  }, [dispatch])
 
   if (isLoading) {
     return <div>Loading...</div>

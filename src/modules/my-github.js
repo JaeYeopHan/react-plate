@@ -1,58 +1,29 @@
-import { createAction, handleActions } from 'redux-actions'
-import { put, call, takeLatest } from 'redux-saga/effects'
+import { handleActions } from 'redux-actions'
+import { takeLatest } from 'redux-saga/effects'
 
 import { getMyGitHubProfile } from 'api'
+import { createAsyncAction, createSaga } from 'utils/actionUtils'
 
-export const initialState = {
-  isLoading: true,
+export const TYPE = 'myGitHub'
+
+const initialState = {
   contents: 'contents',
   errorMessage: '',
 }
 
-const NAMESPACE = 'myGitHub'
+const myGitHubAsync = createAsyncAction(TYPE)
 
-const FETCH = `${NAMESPACE}/FETCH`
-const FETCH_PENDING = `${NAMESPACE}/PENDING`
-const FETCH_SUCCESS = `${NAMESPACE}/FETCH_SUCCESS`
-const FETCH_FAIL = `${NAMESPACE}/FETCH_FAIL`
-
-export const fetch = createAction(FETCH)
-export const fetchPending = createAction(FETCH_PENDING)
-export const fetchSuccess = createAction(FETCH_SUCCESS, payload => payload)
-export const fetchFail = createAction(FETCH_FAIL)
-
-function* fetchMyGitHub() {
-  yield put(fetchPending())
-  try {
-    const result = yield call(getMyGitHubProfile)
-
-    yield put(fetchSuccess(result))
-  } catch (error) {
-    yield put(fetchFail())
-  }
+const reducer = {
+  [myGitHubAsync.SUCCESS]: (state, action) => ({
+    ...state,
+    contents: action.payload,
+  }),
+  [myGitHubAsync.FAIL]: state => ({
+    ...state,
+    contents: 'error',
+  }),
 }
 
-export const reducer = handleActions(
-  {
-    [FETCH_PENDING]: state => ({
-      ...state,
-      isLoading: true,
-    }),
-    [FETCH_SUCCESS]: (state, action) => ({
-      ...state,
-      isLoading: false,
-      contents: action.payload,
-    }),
-    [FETCH_FAIL]: state => ({
-      ...state,
-      isLoading: false,
-      contents: 'error',
-    }),
-  },
-  initialState,
-)
-
-export function* sagas() {
-  console.log('sgas')
-  yield takeLatest(FETCH, fetchMyGitHub)
-}
+export const myGitHubReducer = handleActions(reducer, initialState)
+export const myGitHubSaga = [takeLatest(myGitHubAsync.FETCH, createSaga(TYPE, getMyGitHubProfile))]
+export const { fetch } = myGitHubAsync
