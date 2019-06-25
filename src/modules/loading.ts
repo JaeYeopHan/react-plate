@@ -1,7 +1,7 @@
 import { createAction, handleActions, Action } from 'redux-actions'
 
 export interface ILoadingState {
-  [key: string]: any
+  [key: string]: boolean
 }
 
 const START_LOADING = 'loading/START_LOADING'
