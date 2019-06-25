@@ -1,6 +1,6 @@
 import { createAction, Action } from 'redux-actions'
 import { all, call, put } from 'redux-saga/effects'
-import { startLoading, finishLoading } from '../modules/loading'
+import { startLoading, finishLoading } from '@modules/loading'
 
 export function createAsyncAction(type: string) {
   const FETCH = `${type}/FETCH`
