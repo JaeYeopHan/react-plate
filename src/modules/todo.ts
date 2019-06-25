@@ -1,6 +1,15 @@
-import { createAction, handleActions } from 'redux-actions'
+import { createAction, handleActions, Action } from 'redux-actions'
 
-const initialState = {
+export interface IItem {
+  name: string
+  isDone: boolean
+}
+
+export interface ITodoState {
+  items: IItem[]
+}
+
+const initialState: ITodoState = {
   items: [{ name: 'A', isDone: false }, { name: 'B', isDone: false }, { name: 'C', isDone: false }],
 }
 
@@ -9,7 +18,7 @@ const TYPE = 'todo'
 const ADD = `${TYPE}/ADD`
 
 const reducer = {
-  [ADD]: (state, action) => {
+  [ADD]: (state: ITodoState, action: Action<IItem>) => {
     const newItems = state.items.concat(action.payload)
     return {
       ...state,
@@ -18,7 +27,7 @@ const reducer = {
   },
 }
 
-export const add = createAction(ADD, name => ({
+export const add = createAction(ADD, (name: string) => ({
   name,
   isDone: false,
 }))

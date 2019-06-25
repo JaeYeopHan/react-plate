@@ -1,17 +1,21 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import * as myGitHub from 'modules/my-github'
+import * as myGitHub from '../modules/my-github'
+import { ILoadingState } from '../modules/loading'
+import { IRootState } from '../modules'
 
 const MyGitHubContainer = () => {
-  const isLoading = useSelector(state => state.loading[myGitHub.TYPE])
-  const { contents } = useSelector(state => state[myGitHub.TYPE])
+  const loading = useSelector<IRootState, ILoadingState>(state => state.loading)
+  const { contents } = useSelector<IRootState, myGitHub.IMyGitHubState>(
+    state => state[myGitHub.TYPE],
+  )
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(myGitHub.fetch())
   }, [dispatch])
 
-  if (isLoading) {
+  if (loading[myGitHub.TYPE]) {
     return <div>Loading...</div>
   }
   return (

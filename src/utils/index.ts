@@ -6,6 +6,6 @@ export function delay(timeout = 1000) {
   })
 }
 
-export function info(action) {
+export function info(action: string) {
   console.log(action)
 }
