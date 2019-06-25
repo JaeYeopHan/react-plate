@@ -34,7 +34,8 @@
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-react-hooks": "^1.6.0",
     "husky": "^2.4.0",
-    "lint-staged": "^8.2.0"
+    "lint-staged": "^8.2.0",
+    "typesafe-actions": "^4.4.2"
   },
   "husky": {
     "hooks": {
