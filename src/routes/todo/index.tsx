@@ -1,5 +1,5 @@
 import React from 'react'
-import TodoContainer from 'containers/todo-container'
+import TodoContainer from '@/containers/todo-container'
 
 const Todo = () => {
   return <TodoContainer />

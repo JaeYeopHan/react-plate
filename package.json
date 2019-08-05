@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^5.2.3",
     "@loadable/component": "^5.10.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -11,20 +12,32 @@
     "react-scripts": "3.0.1",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.5",
-    "redux-saga": "^1.0.3"
+    "redux-saga": "^1.0.3",
+    "typescript": "^3.5.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "lint": "eslint src/**/*.js src/**/*.jsx",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "@types/loadable__component": "^5.9.0",
+    "@types/node": "^12.0.10",
+    "@types/react": "^16.8.22",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-redux": "^7.1.0",
+    "@types/react-router-dom": "^4.3.4",
+    "@types/redux-actions": "^2.6.1",
+    "@types/redux-saga": "^0.10.5",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-react-hooks": "^1.6.0",
     "husky": "^2.4.0",
-    "lint-staged": "^8.2.0"
+    "lint-staged": "^8.2.0",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
+    "typesafe-actions": "^4.4.2"
   },
   "husky": {
     "hooks": {

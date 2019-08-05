@@ -1,6 +1,10 @@
 import { createAction, handleActions } from 'redux-actions'
 
-const initialState = {
+export interface ICounterState {
+  count: number
+}
+
+const initialState: ICounterState = {
   count: 0,
 }
 
@@ -10,11 +14,11 @@ const INCREASE = `${TYPE}/INCREASE`
 const DECREASE = `${TYPE}/DECREASE`
 
 const reducer = {
-  [INCREASE]: state => ({
+  [INCREASE]: (state: ICounterState) => ({
     ...state,
     count: state.count + 1,
   }),
-  [DECREASE]: state => ({
+  [DECREASE]: (state: ICounterState) => ({
     ...state,
     count: state.count - 1,
   }),

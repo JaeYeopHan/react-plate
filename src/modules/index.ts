@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import { StateType } from 'typesafe-actions'
 import { all } from 'redux-saga/effects'
 
 import { counterReducer } from './counter'
@@ -16,3 +17,5 @@ export const rootReducer = combineReducers({
 export function* rootSaga() {
   yield all([...myGitHubSaga])
 }
+
+export type IRootState = StateType<typeof rootReducer>

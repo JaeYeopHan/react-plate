@@ -1,9 +1,8 @@
-import { createAction } from 'redux-actions'
+import { createAction, Action } from 'redux-actions'
 import { all, call, put } from 'redux-saga/effects'
+import { startLoading, finishLoading } from '@/modules/loading'
 
-import { startLoading, finishLoading } from 'modules/loading'
-
-export function createAsyncAction(type) {
+export function createAsyncAction(type: string) {
   const FETCH = `${type}/FETCH`
   const SUCCESS = `${type}/SUCCESS`
   const FAILURE = `${type}/FAILURE`
@@ -13,15 +12,15 @@ export function createAsyncAction(type) {
     SUCCESS,
     FAILURE,
     fetch: createAction(FETCH),
-    success: createAction(SUCCESS, payload => payload),
-    failure: createAction(FAILURE, payload => payload),
+    success: createAction(SUCCESS),
+    failure: createAction(FAILURE),
   }
 }
 
-export function createSaga(type, req) {
+export function createSaga(type: string, req: any) {
   const actions = createAsyncAction(type)
 
-  return function*(action) {
+  return function*(action: Action<any>) {
     const payload = (action && action.payload) || null
 
     yield put(startLoading(type))

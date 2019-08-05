@@ -1,9 +1,10 @@
 import React, { useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import * as counter from 'modules/counter'
+import * as counter from '@/modules/counter'
+import { IRootState } from '@/modules/index'
 
 const CounterContainer = () => {
-  const count = useSelector(state => state.counter.count)
+  const counterState = useSelector<IRootState, counter.ICounterState>(state => state.counter)
   const dispatch = useDispatch()
   const handleClickUp = useCallback(() => dispatch(counter.increase()), [dispatch])
   const handleClickDown = useCallback(() => dispatch(counter.decrease()), [dispatch])
@@ -11,7 +12,7 @@ const CounterContainer = () => {
   return (
     <div>
       <h2>Counter Example</h2>
-      <div>{count}</div>
+      <div>{counterState.count}</div>
       <button onClick={handleClickUp}>up</button>
       <button onClick={handleClickDown}>down</button>
     </div>
