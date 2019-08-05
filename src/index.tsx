@@ -4,9 +4,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { createStore, compose, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import createSagaMiddleware from 'redux-saga'
-import { rootReducer, rootSaga } from './modules'
-import { routeConfigs, IRouterConfig } from './routes'
-import Navigation from './components/navigation'
+import { rootReducer, rootSaga } from '@modules/index'
+import { routeConfigs, IRouterConfig } from '@routes/index'
+import Navigation from '@components/navigation'
 
 const sagaMiddleware = createSagaMiddleware()
 const middlewares = []

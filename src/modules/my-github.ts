@@ -1,7 +1,7 @@
 import { handleActions, Action } from 'redux-actions'
 import { takeLatest } from 'redux-saga/effects'
-import { createAsyncAction, createSaga } from '../utils/actionUtils'
-import { getMyGitHubProfile } from '../api'
+import { createAsyncAction, createSaga } from '@utils/actionUtils'
+import { getMyGitHubProfile } from '@api/index'
 
 interface IGitHubContents {
   login: string

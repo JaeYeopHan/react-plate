@@ -4,6 +4,7 @@
     "paths": {
       "@api/*": ["src/api/*"],
       "@components/*": ["src/components/*"],
+      "@containers/*": ["src/containers/*"],
       "@modules/*": ["src/modules/*"],
       "@routes/*": ["src/routes/*"],
       "@utils/*": ["src/utils/*"]

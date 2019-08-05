@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import * as counter from '../modules/counter'
-import { IRootState } from '../modules'
+import * as counter from '@modules/counter'
+import { IRootState } from '@modules/index'
 
 const CounterContainer = () => {
   const counterState = useSelector<IRootState, counter.ICounterState>(state => state.counter)
