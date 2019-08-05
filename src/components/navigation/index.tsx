@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { PAGES } from '@routes/index'
+import { PAGES } from '@/routes/index'
 
 const Navigation = () => {
   return (

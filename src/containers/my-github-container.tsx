@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import * as myGitHub from '@modules/my-github'
-import { ILoadingState } from '@modules/loading'
-import { IRootState } from '@modules/index'
+import * as myGitHub from '@/modules/my-github'
+import { ILoadingState } from '@/modules/loading'
+import { IRootState } from '@/modules/index'
 
 const MyGitHubContainer = () => {
   const loading = useSelector<IRootState, ILoadingState>(state => state.loading)
